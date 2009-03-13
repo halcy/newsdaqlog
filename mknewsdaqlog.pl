@@ -58,6 +58,7 @@ sub parse_newsdaq( $ ) {
 	return( %log_hash );
 }
 
+# Save a log to CSV
 sub save_csv( % ) {
 	my %log = @_;
 	open( my $OUT, '>', 'newsdaq.csv' );
@@ -82,11 +83,13 @@ sub save_csv( % ) {
 	return();
 }
 
+# Call out to ruby for graphing
 sub make_graphs() {
 	system( 'ruby', 'graph.rb' );
 	return();
 }
 
+# Make negative things red and positive ones green
 sub rg( $ ) {
 	my $value = shift();
 	return(
@@ -96,6 +99,7 @@ sub rg( $ ) {
 	);
 }
 
+# Print out the HTML
 sub save_html( % ) {
 	my %log = @_;
 	open( my $OUT, '>', 'index.html' );
@@ -188,6 +192,7 @@ sub save_html( % ) {
 	return();
 }
 
+# GO GO GO!
 my %log = parse_newsdaq( "/home/halcyon/irclogs/RIZON/\#news.log" );
 save_csv( %log );
 make_graphs();
