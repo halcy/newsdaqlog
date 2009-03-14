@@ -83,6 +83,28 @@ sub save_csv( % ) {
 	return();
 }
 
+# Array max value helper
+sub max( @ ) {
+	my $cur_max = 0;
+	foreach( @_ ) {
+		if( defined( $_ ) && $_ > $cur_max ) {
+			$cur_max = $_;
+		}
+	}
+	return( $cur_max );
+}
+
+# Array min value helper
+sub min( @ ) {
+	my $cur_min = 99999999999;
+	foreach( @_ ) {
+		if( defined( $_ ) && $_ < $cur_min ) {
+			$cur_min = $_;
+		}
+	}
+	return( $cur_min );
+}
+
 # Call out to ruby for graphing
 sub make_graphs() {
 	system( 'ruby', 'graph.rb' );
@@ -125,20 +147,25 @@ sub save_html( % ) {
 		'seal' => 'Seal',
 		'lion' => 'Lion',
 	);
-	foreach( 'shota', 'pantsu', 'onee', 'imouto', 'seal', 'lion' ) {
+	foreach my $i ( 'shota', 'pantsu', 'onee', 'imouto', 'seal', 'lion' ) {
 		$OUT->print(
-			'<h2>' . $names{$_} . '</h2>' .
+			'<h2>' . $names{$i} . ' (' .
+			'All-time high: ' . max(
+				map{$log{$_}->{$i . '_value'}} keys( %log ) ) .
+			', all-time low: ' . min(
+				map{$log{$_}->{$i . '_value'}} keys( %log ) ) .
+			')</h2>' .
 			'<p><table class="graphs">' .
 			'<tr>' .
 			'<td>Overall</td><td>Recent</td><td>Change</td>' .
 			'</tr>' .
 			'<tr>' .
-			'<td><img src="' . $_ . '_overall.png" alt="' .
-			$names{$_} . ', Overall" /></td>' .
-			'<td><img src="' . $_ . '_recent.png" alt="' .
-			$names{$_} . ', Recent" /></td>' .
-			'<td><img src="' . $_ . '_recent_change.png" alt="' .
-			$names{$_} . ', Change" /></td>' .
+			'<td><img src="' . $i . '_overall.png" alt="' .
+			$names{$i} . ', Overall" /></td>' .
+			'<td><img src="' . $i . '_recent.png" alt="' .
+			$names{$i} . ', Recent" /></td>' .
+			'<td><img src="' . $i . '_recent_change.png" alt="' .
+			$names{$i} . ', Change" /></td>' .
 			'</tr>' .
 			'</table></p>'
 		);
@@ -186,7 +213,23 @@ sub save_html( % ) {
 	}
 	$OUT->print( '</table></p>' );
 
-	$OUT->print( '</body></html>' );
+	$OUT->print(
+		'<p>' .
+		'Charts are created from irssi logfiles of <a href="' .
+		'irc://irc.rizon.net/#news">#NEWS@Rizon</a>. ' .
+		'Each data point is listed once, the first time it is seen. ' .
+		'Page updates daily-ish. ' .
+		'Normalized change is change/value. These charts are in no ' .
+		'way proper or accurate, I know nothing about statistics. ' .
+		'Thanks to <a href="irc://irc.rizon.net/#satf">#satf</a>, ' .
+		'especially k3ph. (c) 2009 <a href="http://halcy.de">' .
+		'L. Diener</a>, just do whatever. ' .
+		'<a href="mknewsdaqlog.txt">Source code</a>, ' .
+		'<a href="graph.txt">graph code</a>, ' .
+		'<a href="http://github.com/halcy/newsdaqlog/">on github</a>.' .
+		'</p>' .
+		'</body></html>'
+	);
 	
 	close( $OUT );
 	return();
