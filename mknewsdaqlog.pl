@@ -142,12 +142,12 @@ sub save_html( % ) {
 	my %names = (
 		'shota' => 'Shota',
 		'pantsu' => 'Pantsu',
-		'onee' => 'Onee-San',
+		'oneesan' => 'Onee-San',
 		'imouto' => 'Imouto',
 		'seal' => 'Seal',
 		'lion' => 'Lion',
 	);
-	foreach my $i ( 'shota', 'pantsu', 'onee', 'imouto', 'seal', 'lion' ) {
+	foreach my $i ( 'shota', 'pantsu', 'oneesan', 'imouto', 'seal', 'lion' ) {
 		$OUT->print(
 			'<h2>' . $names{$i} . ' (' .
 			'All-time high: ' . max(
