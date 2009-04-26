@@ -5,7 +5,7 @@ use warnings;
 
 use Date::Language;
 use Data::Dumper;
-use GD::Graph::lines;
+#use GD::Graph::lines;
 
 # Open a file and parse NEWSDAQ values out.
 sub parse_newsdaq( $ ) {
@@ -63,7 +63,7 @@ sub save_csv( % ) {
 	my %log = @_;
 	open( my $OUT, '>', 'newsdaq.csv' );
 	foreach( sort( keys( %log ) ) ) {
-		$OUT->print(
+		print $OUT (
 			"$_," .
 			$log{$_}->{shota_value} . ',' .
 			$log{$_}->{shota_change} . ',' .
@@ -126,13 +126,13 @@ sub save_html( % ) {
 	my %log = @_;
 	open( my $OUT, '>', 'index.html' );
 
-	$OUT->print(
+	print $OUT(
 		'<html><head><title>NEWSDAQ</title>' .
 		'<link rel="stylesheet" type="text/css" href="style.css">' .
 		'</head><body><h1>NEWSDAQ</h1>'
 	);
 	
-	$OUT->print(
+	print $OUT(
 		'<h2>Normalized change - Recent</h2>' .
 		'<p><img src="change_recent.png" alt="Change, Recent" /></p>' .
 		'<h2>Normalized change - Overall</h2>' .
@@ -148,7 +148,7 @@ sub save_html( % ) {
 		'lion' => 'Lion',
 	);
 	foreach my $i ( 'shota', 'pantsu', 'oneesan', 'imouto', 'seal', 'lion' ) {
-		$OUT->print(
+		print $OUT(
 			'<h2>' . $names{$i} . ' (' .
 			'All-time high: ' . max(
 				map{$log{$_}->{$i . '_value'}} keys( %log ) ) .
@@ -172,7 +172,7 @@ sub save_html( % ) {
 		
 	}
 	
-	$OUT->print(
+	print $OUT(
 		'<h2>Raw data (' .
 		'<a href="newsdaq.csv">CSV</a>' .
 		')</h2><p><table id="raw" cellspacing="0" cellpadding="0">' .
@@ -193,7 +193,7 @@ sub save_html( % ) {
 		'</tr>'
 	);
 	foreach( reverse( sort( keys( %log ) ) ) ) {
-		$OUT->print(
+		print $OUT(
 			'<tr>' .
 			'<td><strong>' . localtime( $_ ) . '</strong></td>' .
 			'<td>' . $log{$_}->{shota_value} . '</td>' .
@@ -211,9 +211,9 @@ sub save_html( % ) {
 			"</tr>\n"
 		);
 	}
-	$OUT->print( '</table></p>' );
+	print $OUT( '</table></p>' );
 
-	$OUT->print(
+	print $OUT(
 		'<p>' .
 		'Charts are created from irssi logfiles of <a href="' .
 		'irc://irc.rizon.net/#news">#NEWS@Rizon</a>. ' .

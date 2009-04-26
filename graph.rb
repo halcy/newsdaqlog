@@ -58,12 +58,12 @@ change_recent.minimum_value = -1.5
 change_recent.left_margin = 0
 change_recent.top_margin = 0
 change_recent.theme = theme
-change_recent.data( "Shota", @shota_normal[-11..-1] )
-change_recent.data( "Pantsu", @pantsu_normal[-11..-1] )
-change_recent.data( "Onee-San", @oneesan_normal[-11..-1] )
-change_recent.data( "Imouto", @imouto_normal[-11..-1] )
-change_recent.data( "Seal", @seal_normal[-11..-1] )
-change_recent.data( "Lion", @lion_normal[-11..-1] )
+change_recent.data( "Shota", @shota_normal[-31..-1] )
+change_recent.data( "Pantsu", @pantsu_normal[-31..-1] )
+change_recent.data( "Onee-San", @oneesan_normal[-31..-1] )
+change_recent.data( "Imouto", @imouto_normal[-31..-1] )
+change_recent.data( "Seal", @seal_normal[-31..-1] )
+change_recent.data( "Lion", @lion_normal[-31..-1] )
 change_recent.write('change_recent.png')
 
 shota_overall = Gruff::Line.new("300x200")
@@ -138,8 +138,8 @@ shota_recent.top_margin = 0
 shota_recent.hide_legend = true
 shota_recent.theme = theme
 shota_recent.minimum_value = 0.0
-shota_recent.maximum_value = @shota_value[-11..-1].max
-shota_recent.data( "Shota", @shota_value[-11..-1] )
+shota_recent.maximum_value = @shota_value[-31..-1].max
+shota_recent.data( "Shota", @shota_value[-31..-1] )
 shota_recent.write('shota_recent.png')
 
 pantsu_recent = Gruff::Line.new("300x200")
@@ -148,8 +148,8 @@ pantsu_recent.top_margin = 0
 pantsu_recent.hide_legend = true
 pantsu_recent.theme = theme
 pantsu_recent.minimum_value = 0.0
-pantsu_recent.maximum_value = @pantsu_value[-11..-1].max
-pantsu_recent.data( "Pantsu", @pantsu_value[-11..-1] )
+pantsu_recent.maximum_value = @pantsu_value[-31..-1].max
+pantsu_recent.data( "Pantsu", @pantsu_value[-31..-1] )
 pantsu_recent.write('pantsu_recent.png')
 
 oneesan_recent = Gruff::Line.new("300x200")
@@ -158,8 +158,8 @@ oneesan_recent.top_margin = 0
 oneesan_recent.hide_legend = true
 oneesan_recent.theme = theme
 oneesan_recent.minimum_value = 0.0
-oneesan_recent.maximum_value = @oneesan_value[-11..-1].max
-oneesan_recent.data( "Onee-San", @oneesan_value[-11..-1] )
+oneesan_recent.maximum_value = @oneesan_value[-31..-1].max
+oneesan_recent.data( "Onee-San", @oneesan_value[-31..-1] )
 oneesan_recent.write('oneesan_recent.png')
 
 imouto_recent = Gruff::Line.new("300x200")
@@ -168,8 +168,8 @@ imouto_recent.top_margin = 0
 imouto_recent.hide_legend = true
 imouto_recent.theme = theme
 imouto_recent.minimum_value = 0.0
-imouto_recent.maximum_value = @imouto_value[-11..-1].max
-imouto_recent.data( "Imouto", @imouto_value[-11..-1] )
+imouto_recent.maximum_value = @imouto_value[-31..-1].max
+imouto_recent.data( "Imouto", @imouto_value[-31..-1] )
 imouto_recent.write('imouto_recent.png')
 
 seal_recent = Gruff::Line.new("300x200")
@@ -178,8 +178,8 @@ seal_recent.top_margin = 0
 seal_recent.hide_legend = true
 seal_recent.theme = theme
 seal_recent.minimum_value = 0.0
-seal_recent.maximum_value = @seal_value[-11..-1].max
-seal_recent.data( "Seal", @seal_value[-11..-1] )
+seal_recent.maximum_value = @seal_value[-31..-1].max
+seal_recent.data( "Seal", @seal_value[-31..-1] )
 seal_recent.write('seal_recent.png')
 
 lion_recent = Gruff::Line.new("300x200")
@@ -188,8 +188,8 @@ lion_recent.top_margin = 0
 lion_recent.hide_legend = true
 lion_recent.theme = theme
 lion_recent.minimum_value = 0.0
-lion_recent.maximum_value = @lion_value[-11..-1].max
-lion_recent.data( "Lion", @lion_value[-11..-1] )
+lion_recent.maximum_value = @lion_value[-31..-1].max
+lion_recent.data( "Lion", @lion_value[-31..-1] )
 lion_recent.write('lion_recent.png')
 
 shota_recent_change = Gruff::Line.new("300x200")
@@ -197,7 +197,7 @@ shota_recent_change.left_margin = 0
 shota_recent_change.top_margin = 0
 shota_recent_change.hide_legend = true
 shota_recent_change.theme = theme
-shota_recent_change.data( "Shota", @shota_change[-11..-1] )
+shota_recent_change.data( "Shota", @shota_change[-31..-1] )
 shota_recent_change.write('shota_recent_change.png')
 
 pantsu_recent_change = Gruff::Line.new("300x200")
@@ -205,7 +205,7 @@ pantsu_recent_change.left_margin = 0
 pantsu_recent_change.top_margin = 0
 pantsu_recent_change.hide_legend = true
 pantsu_recent_change.theme = theme
-pantsu_recent_change.data( "Pantsu", @pantsu_change[-11..-1] )
+pantsu_recent_change.data( "Pantsu", @pantsu_change[-31..-1] )
 pantsu_recent_change.write('pantsu_recent_change.png')
 
 oneesan_recent_change = Gruff::Line.new("300x200")
@@ -213,7 +213,7 @@ oneesan_recent_change.left_margin = 0
 oneesan_recent_change.top_margin = 0
 oneesan_recent_change.hide_legend = true
 oneesan_recent_change.theme = theme
-oneesan_recent_change.data( "Onee-San", @oneesan_change[-11..-1] )
+oneesan_recent_change.data( "Onee-San", @oneesan_change[-31..-1] )
 oneesan_recent_change.write('oneesan_recent_change.png')
 
 imouto_recent_change = Gruff::Line.new("300x200")
@@ -221,7 +221,7 @@ imouto_recent_change.left_margin = 0
 imouto_recent_change.top_margin = 0
 imouto_recent_change.hide_legend = true
 imouto_recent_change.theme = theme
-imouto_recent_change.data( "Imouto", @imouto_change[-11..-1] )
+imouto_recent_change.data( "Imouto", @imouto_change[-31..-1] )
 imouto_recent_change.write('imouto_recent_change.png')
 
 seal_recent_change = Gruff::Line.new("300x200")
@@ -229,7 +229,7 @@ seal_recent_change.left_margin = 0
 seal_recent_change.top_margin = 0
 seal_recent_change.hide_legend = true
 seal_recent_change.theme = theme
-seal_recent_change.data( "Seal", @seal_change[-11..-1] )
+seal_recent_change.data( "Seal", @seal_change[-31..-1] )
 seal_recent_change.write('seal_recent_change.png')
 
 lion_recent_change = Gruff::Line.new("300x200")
@@ -237,5 +237,5 @@ lion_recent_change.left_margin = 0
 lion_recent_change.top_margin = 0
 lion_recent_change.hide_legend = true
 lion_recent_change.theme = theme
-lion_recent_change.data( "Lion", @lion_change[-11..-1] )
+lion_recent_change.data( "Lion", @lion_change[-31..-1] )
 lion_recent_change.write('lion_recent_change.png')
